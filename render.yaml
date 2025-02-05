@@ -1,13 +1,16 @@
 services:
-  - name: your-service-name  # Replace with your Render service name (important!)
+  - name: my-react-app  # Replace with your service name!
     type: static
     static:
-      - root: ./  # Or the path to your static files (e.g., ./build, ./dist, ./public)
+      - root: ./build  # Serve files from the 'build' directory
         headers:
-          Content-Type: text/javascript  # For JavaScript files
-      - root: ./css  # Example for CSS files
+          Cache-Control: public, max-age=3600
+      - root: ./build/*.js
+        headers:
+          Content-Type: text/javascript
+      - root: ./build/*.css
         headers:
           Content-Type: text/css
-      - root: ./assets # Example for assets like images
+      - root: ./build/assets # Example for assets like images
         headers:
           Content-Type: image/jpeg # Example for jpeg files
